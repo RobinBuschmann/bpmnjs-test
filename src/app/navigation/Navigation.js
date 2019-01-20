@@ -3,10 +3,12 @@ import {NavLink} from 'react-router-dom';
 
 import css from './Navigation.module.scss';
 
-export const Navigation = () => (
+export const Navigation = ({routes}) => (
     <ul className={css.navigation}>
-        <li><NavLink to={'/home'}>Home</NavLink></li>
-        <li><NavLink to={'/modeler'}>Modeler</NavLink></li>
-        <li><NavLink to={'/items'}>Items</NavLink></li>
+        {routes.map(({path, title}, index) => (
+            <li key={index}>
+                <NavLink to={path}>{title}</NavLink>
+            </li>
+        ))}
     </ul>
 );
