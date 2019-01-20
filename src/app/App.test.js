@@ -1,4 +1,4 @@
-import "../jest-setup";
+import "../../jest-setup";
 
 import {mount} from "enzyme";
 import React from "react";
@@ -6,8 +6,8 @@ import React from "react";
 import {MemoryRouter} from "react-router-dom";
 
 import App from "./App";
-import {Item} from "./components/Item";
-import items from "./stores/items";
+import {Item} from "./items/Item";
+import items from "./items/items";
 
 let wrapper;
 
