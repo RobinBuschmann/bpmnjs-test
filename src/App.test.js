@@ -6,28 +6,37 @@ import React from "react";
 import {MemoryRouter} from "react-router-dom";
 
 import App from "./App";
+import {Item} from "./components/Item";
+import items from "./stores/items";
 
-it("renders an app with 2 routes, home and modeler page", async () => {
-    const wrapper = mount(
+let wrapper;
+
+beforeAll(() => {
+    wrapper = mount(
         <MemoryRouter initialEntries={["/"]} initialIndex={0}>
             <App/>
         </MemoryRouter>
     );
+});
 
+it('renders home page as default', () => {
     const HomeTitle = <h1>Home</h1>;
-    const ModelerTitle = <h1>Modeler</h1>;
 
-    // Home title is rendered
     expect(wrapper.contains(HomeTitle)).toEqual(true);
+});
 
-    // When clicking the /modeler link
+it('renders modeler page with bpmn modeler after clicking on "/modeler" link', () => {
+    const ModelerTitle = <h1>Modeler</h1>;
     wrapper.find('[href="/modeler"]').simulate("click", {button: 0});
 
-    // Modeler title is rendered
     expect(wrapper.contains(ModelerTitle)).toEqual(true);
-
-    wrapper.update();
-
-    // Modeler container is rendered
     expect(wrapper.html()).toMatch(/.bjs-container/);
+});
+
+it('renders items page with items after clicking on "/items" link', () => {
+    const ItemsTitle = <h1>Items</h1>;
+    wrapper.find('[href="/items"]').simulate("click", {button: 0});
+
+    expect(wrapper.contains(ItemsTitle)).toEqual(true);
+    expect(wrapper.find(Item).length).toEqual(items.length);
 });
