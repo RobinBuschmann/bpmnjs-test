@@ -1,14 +1,20 @@
 import React from "react";
-// import route stuff
+import {Redirect, Route, Switch} from "react-router-dom";
 
-// import Navigation component
-// import HomePage component
-// import ModelerPage component
+import {Navigation} from "./components/Navigation";
+import {HomePage} from "./pages/HomePage";
+import {ModelerPage} from "./pages/ModelerPage";
+
+import css from './App.module.scss';
 
 export default () => (
-  <div>
-    {/* render a navigation component */}
-    <hr />
-    {/* render routing logic of react-router-dom */}
-  </div>
+    <div className={css.app}>
+        <Navigation/>
+        <hr/>
+        <Switch>
+            <Route exact path="/" render={() => (<Redirect to={'/home'}/>)}/>
+            <Route path={'/home'} component={HomePage}/>
+            <Route path={'/modeler'} component={ModelerPage}/>
+        </Switch>
+    </div>
 );
