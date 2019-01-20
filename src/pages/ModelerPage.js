@@ -28,7 +28,7 @@ export class ModelerPage extends React.Component {
             <>
                 <h1>Modeler</h1>
                 <div className={css.modelerContainer}
-                     ref={ref => this.modelerContainer = ref}></div>
+                     ref={ref => this.modelerContainer = ref}/>
             </>
         )
     }

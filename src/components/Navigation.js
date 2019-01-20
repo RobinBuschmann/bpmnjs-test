@@ -7,5 +7,6 @@ export const Navigation = () => (
     <ul className={css.navigation}>
         <li><NavLink to={'/home'}>Home</NavLink></li>
         <li><NavLink to={'/modeler'}>Modeler</NavLink></li>
+        <li><NavLink to={'/items'}>Items</NavLink></li>
     </ul>
 );
